@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Khushi Sharma Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        /* Add the same styles as in the main page */
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-900 text-white">
+    <header>
+        <!-- Add the same header as in the main page -->
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold mb-8 gradient-text">Work Experience</h1>
+        
+        <div class="space-y-12">
+            <div class="bg-gray-800 p-6 rounded-lg custom-shadow">
+                <h2 class="text-2xl font-bold mb-4 gradient-text">AI Intern (Data Analyst)</h2>
+                <p class="text-gray-400 mb-4">Infosys Limited | May 2024 - July 2024</p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Improved diagnostic accuracy by 25% through advanced data analysis of medical images.</li>
+                    <li>Boosted data accessibility by 20% by developing interactive dashboards.</li>
+                    <li>Enhanced decision-making efficiency by 25% using data visualizations in Power BI.</li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-lg custom-shadow">
+                <h2 class="text-2xl font-bold mb-4 gradient-text">Artificial Intelligence Intern</h2>
+                <p class="text-gray-400 mb-4">Edunet Foundation | June 2023 - July 2023</p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Transformed raw data into actionable insights using Python, SQL, and Power BI, increasing effectiveness by 30%.</li>
+                    <li>Created data visualizations and reports in Power BI to support data-driven decision-making.</li>
+                    <li>Evaluated datasets of up to 100,000 rows, showcasing ability to work with large-scale data.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Add the same footer as in the main page -->
+    </footer>
+
+    <script>
+        // Add GSAP animations
+        gsap.from("h1", { opacity: 0, y: 50, duration: 1 });
+        gsap.from(".bg-gray-800", { opacity: 0, y: 50, duration: 1, stagger: 0.2 });
+    </script>
+</body>
+</html>

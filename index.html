@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khushi Sharma - Data Analyst Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .custom-shadow {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        
+        #particles-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Light mode styles */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a202c;
+  --card-bg: #f7fafc;
+}
+
+/* Dark mode styles */
+.dark {
+  --bg-color: #1a202c;
+  --text-color: #ffffff;
+  --card-bg: #2d3748;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.bg-gray-800 {
+  background-color: var(--card-bg);
+}
+
+.bg-gray-900 { background-color: var(--bg-color); }
+.text-white { color: var(--text-color); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <canvas id="particles-bg"></canvas>
+    
+    <header class="py-6 px-4">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold gradient-text">KS</a>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-blue-400 transition duration-300">Home</a></li>
+                <li><a href="experience.html" class="hover:text-blue-400 transition duration-300">Experience</a></li>
+                <li><a href="skills.html" class="hover:text-blue-400 transition duration-300">Skills</a></li>
+                <li><a href="projects.html" class="hover:text-blue-400 transition duration-300">Projects</a></li>
+                <li><a href="contact.html" class="hover:text-blue-400 transition duration-300">Contact</a></li>
+
+            </ul>
+            <button id="theme-toggle" class="text-2xl focus:outline-none">🌓</button>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-12">
+        <section class="text-center mb-16">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text">Khushi Sharma</h1>
+            <p class="text-xl md:text-2xl mb-8">Data Analyst | Python | SQL | Power BI</p>
+            <a href="contact.html" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300">Get in Touch</a>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 gradient-text">About Me</h2>
+            <p class="text-lg leading-relaxed">
+                Data-driven Computer Science graduate with 1 year of analytics experience in Python, SQL, and Power BI. 
+                Passionate about turning complex data into clear, actionable insights that drive business decisions. 
+                Let's explore how data can transform your business!
+            </p>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gray-800 p-6 rounded-lg custom-shadow">
+                <h3 class="text-xl font-bold mb-4 gradient-text">Latest Project</h3>
+                <p class="mb-4">TATA Data Visualization: Empowering Business with Effective Insights</p>
+                <a href="projects.html" class="text-blue-400 hover:underline">Learn More →</a>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg custom-shadow">
+                <h3 class="text-xl font-bold mb-4 gradient-text">Featured Skill</h3>
+                <p class="mb-4">Advanced Data Analysis with Python and SQL</p>
+                <a href="skills.html" class="text-blue-400 hover:underline">View All Skills →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8 px-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Khushi Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Particle background
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('particles-bg'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const particles = new THREE.BufferGeometry();
+        const particleCount = 5000;
+
+        const posArray = new Float32Array(particleCount * 3);
+
+        for(let i = 0; i < particleCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 5;
+        }
+
+        particles.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+        const material = new THREE.PointsMaterial({
+            size: 0.005,
+            color: 0x4a90e2
+        });
+
+        const particlesMesh = new THREE.Points(particles, material);
+        scene.add(particlesMesh);
+
+        camera.position.z = 2;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particlesMesh.rotation.y += 0.001;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // GSAP animations
+        gsap.from("h1", { opacity: 0, y: 50, duration: 1, delay: 0.5 });
+        gsap.from("p", { opacity: 0, y: 30, duration: 1, delay: 0.8 });
+        gsap.from("a.bg-blue-600", { opacity: 0, y: 30, duration: 1, delay: 1.1 });
+        gsap.from(".grid > div", { opacity: 0, y: 30, duration: 1, stagger: 0.2, delay: 1.4 });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+    <script src="theme-toggle.js"></script>
+</body>
+</html>

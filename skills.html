@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Khushi Sharma Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Add the same styles as in the main page */
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-900 text-white">
+    <header>
+        <!-- Add the same header as in the main page -->
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold mb-8 gradient-text">Skills</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-gray-800 p-6 rounded-lg custom-shadow">
+                <canvas id="skillChart"></canvas>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg custom-shadow">
+                <h2 class="text-2xl font-bold mb-4 gradient-text">Technical Skills</h2>
+                <ul class="space-y-2">
+                    <li>Python (Advanced)</li>
+                    <li>SQL (Advanced)</li>
+                    <li>Power BI</li>
+                    <li>Tableau</li>
+                    <li>Excel (Advanced)</li>
+                    <li>Data Analysis</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-lg custom-shadow">
+            <h2 class="text-2xl font-bold mb-4 gradient-text">Certifications</h2>
+            <ul class="space-y-2">
+                <li>Google Data Analytics Professional Certificate (In Progress, Expected December 2024)</li>
+                <li>HackerRank Certification: SQL (Advanced)</li>
+                <li>HackerRank Certification: Python (Intermediate)</li>
+                <li>Learn Microsoft Power BI in Microsoft Fabric (Udemy)</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Add the same footer as in the main page -->
+    </footer>
+
+    <script>
+        // Add GSAP animations
+        gsap.from("h1", { opacity: 0, y: 50, duration: 1 });
+        gsap.from(".bg-gray-800", { opacity: 0, y: 50, duration: 1, stagger: 0.2 });
+
+        // Create skill chart
+        const ctx = document.getElementById('skillChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Python', 'SQL', 'Power BI', 'Tableau', 'Excel', 'Data Analysis'],
+                datasets: [{
+                    label: 'Skill Level',
+                    data: [90, 85, 80, 75, 85, 88],
+                    backgroundColor: 'rgba(74, 144, 226, 0.2)',
+                    borderColor: 'rgba(74, 144, 226, 1)',
+                    pointBackgroundColor: 'rgba(74, 144, 226, 1)',
+                }]
+            },
+            options: {
+                scale: {
+                    ticks: { beginAtZero: true, max: 100 }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

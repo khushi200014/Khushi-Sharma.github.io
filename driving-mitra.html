@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driving Mitra Project - Khushi Sharma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+/* Global styles */
+:root {
+  --primary-color: #3490dc;
+  --secondary-color: #6574cd;
+  --text-color: #2d3748;
+  --background-color: #ffffff;
+  --code-background: #1a202c;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Navigation styles */
+.nav-container {
+  padding: 1rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Link styles */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+/* Code block styles */
+.code-block {
+  background-color: var(--code-background);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  color: #e2e8f0;
+  font-family: 'Fira Code', monospace;
+}
+
+/* Section styles */
+.section {
+  margin-bottom: 3rem;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 4rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Utility classes */
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.space-x-4 > * + * {
+  margin-left: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+}
+    </style>
+</head>
+<body>
+    <header class="nav-container">
+        <div class="container flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold gradient-text">KS</a>
+            <nav class="space-x-4">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+                <button aria-label="Toggle dark mode">🌓</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="text-4xl font-bold mb-8 gradient-text">Driving Mitra Case Study</h1>
+        
+        <section class="section">
+            <h2 class="text-2xl font-bold mb-4">Project Overview</h2>
+            <p>This case study focuses on developing an AI-driven portal for driving schools. Using React.js and Node.js, I created a platform that optimizes the learning experience for students while improving operational efficiency for driving schools.</p>
+        </section>
+
+        <section class="section">
+            <h2 class="text-2xl font-bold mb-4">Key Findings</h2>
+            <ul>
+                <li>AI-powered matching improved student-instructor compatibility by 80%</li>
+                <li>Location services reduced travel time by 30%</li>
+                <li>Automated scheduling increased resource utilization by 40%</li>
+                <li>Enhanced learning outcomes through personalization</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="text-2xl font-bold mb-4">Methodology</h2>
+            <p>I utilized various technologies and techniques, including:</p>
+            <ul>
+                <li>React.js for the frontend interface</li>
+                <li>Node.js and Express for the backend</li>
+                <li>MongoDB for flexible data storage</li>
+                <li>TensorFlow for AI components</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="text-2xl font-bold mb-4">Sample Code</h2>
+            <div class="code-block">
+async function matchStudentWithInstructor(student) {
+    const availableInstructors = await Instructor.find({
+        isAvailable: true,
+        location: {
+            $near: {
+                $geometry: {
+                    type: "Point",
+                    coordinates: student.location
+                },
+                $maxDistance: 5000
+            }
+        }
+    }).sort({ rating: -1 });
+    
+    return AI.rankInstructors(availableInstructors, student);
+}
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="text-2xl font-bold mb-4">Results and Impact</h2>
+            <p>Based on the implementation, we were able to:</p>
+            <ul>
+                <li>Publish research paper in IJRASET</li>
+                <li>Improve student-instructor matching by 60%</li>
+                <li>Reduce administrative workload by 40%</li>
+                <li>Enhance overall learning outcomes</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="text-2xl font-bold mb-4">Conclusion</h2>
+            <p>This case study demonstrates the potential of AI and location-based services in revolutionizing traditional learning environments. By leveraging modern technologies, we created a solution that benefits both students and driving schools.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Khushi Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danny's Pizza Runner Case Study - Khushi Sharma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        :root {
+            --primary-color: #3490dc;
+            --secondary-color: #6574cd;
+            --text-color: #2d3748;
+            --background-color: #ffffff;
+            --code-background: #1a202c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navigation styles */
+        .nav-container {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Link styles */
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Code block styles */
+        .code-block {
+            background-color: var(--code-background);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+            color: #e2e8f0;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Section styles */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        /* List styles */
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Utility classes */
+        .flex {
+            display: flex;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .space-x-4 > * + * {
+            margin-left: 1rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="nav-container">
+        <div class="container flex justify-between items-center">
+            <a href="index.html" class="gradient-text" style="font-size: 1.5rem; font-weight: bold;">KS</a>
+            <nav class="space-x-4">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+                <button aria-label="Toggle dark mode">🌓</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 2rem;">
+        <h1 class="gradient-text">Danny's Pizza Runner Case Study</h1>
+        
+        <section class="section">
+            <h2>Project Overview</h2>
+            <p>This case study focuses on analyzing the performance of Danny's Pizza Runner, a pizza delivery service. Using SQL, I processed and analyzed over 10,000 order records to derive meaningful insights and improve business operations.</p>
+        </section>
+
+        <section class="section">
+            <h2>Key Findings</h2>
+            <ul>
+                <li>Identified peak hours between 7 pm to 9 pm</li>
+                <li>Discovered Sunday as the busiest day of the week</li>
+                <li>Improved resource allocation by 15% based on these insights</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Methodology</h2>
+            <p>I used advanced SQL queries to analyze the data, including:</p>
+            <ul>
+                <li>JOINs to combine relevant tables</li>
+                <li>Window functions for time-based analysis</li>
+                <li>Aggregate functions to summarize data</li>
+                <li>CTEs (Common Table Expressions) for complex queries</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Sample SQL Query</h2>
+            <div class="code-block">
+WITH order_summary AS (
+    SELECT 
+        o.order_id,
+        c.customer_id,
+        r.runner_id,
+        o.order_date,
+        COUNT(od.pizza_id) as pizza_count,
+        SUM(p.price) as total_price
+    FROM orders o
+    JOIN customers c ON o.customer_id = c.customer_id
+    JOIN runners r ON o.runner_id = r.runner_id
+    JOIN order_details od ON o.order_id = od.order_id
+    JOIN pizzas p ON od.pizza_id = p.pizza_id
+    GROUP BY o.order_id, c.customer_id, r.runner_id, o.order_date
+)
+SELECT 
+    DAYNAME(order_date) as day_of_week,
+    HOUR(order_date) as hour_of_day,
+    COUNT(*) as order_count,
+    SUM(pizza_count) as total_pizzas,
+    AVG(total_price) as avg_order_value
+FROM order_summary
+GROUP BY DAYNAME(order_date), HOUR(order_date)
+ORDER BY order_count DESC
+LIMIT 10;
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Results and Impact</h2>
+            <ul>
+                <li>Optimize staffing during peak hours (7 pm to 9 pm)</li>
+                <li>Increase inventory and preparation for busy Sundays</li>
+                <li>Improve overall resource allocation by 15%</li>
+                <li>Enhance customer satisfaction through faster delivery times</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Conclusion</h2>
+            <p>This case study demonstrates the power of data-driven decision making in optimizing business operations. By leveraging SQL for in-depth analysis of order data, we were able to identify key patterns and make impactful improvements to Danny's Pizza Runner service.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Khushi Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

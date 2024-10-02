@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accenture Data Analytics Case Study - Khushi Sharma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+/* Global styles */
+:root {
+  --primary-color: #3490dc;
+  --secondary-color: #6574cd;
+  --text-color: #2d3748;
+  --background-color: #ffffff;
+  --code-background: #1a202c;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Navigation styles */
+.nav-container {
+  padding: 1rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Link styles */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+/* Code block styles */
+.code-block {
+  background-color: var(--code-background);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  color: #e2e8f0;
+  font-family: 'Fira Code', monospace;
+}
+
+/* Section styles */
+.section {
+  margin-bottom: 3rem;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 4rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Utility classes */
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.space-x-4 > * + * {
+  margin-left: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+}
+    </style>
+</head>
+<body>
+    <header class="nav-container">
+        <div class="container flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold gradient-text">KS</a>
+            <nav class="space-x-4">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+                <button aria-label="Toggle dark mode">🌓</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="text-4xl font-bold mb-8 gradient-text">Accenture Data Analytics Case Study</h1>
+        
+        <section class="section">
+            <h2 class="text-2xl font-bold mb-4">Project Overview</h2>
+            <p>This case study focuses on analyzing social media content performance data for a client in the social media industry. Using Python and data visualization tools, I processed extensive datasets to identify key trends and optimization opportunities.</p>
+        </section>
+
+        <section class="section">
+            <h2 class="text-2xl font-bold mb-4">Key Findings</h2>
+            <ul>
+                <li>Identified top 5 content categories by engagement</li>
+                <li>Discovered optimal posting times for maximum reach</li>
+                <li>Improved content strategy efficiency by 40%</li>
+                <li>Enhanced targeting accuracy by 30%</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="text-2xl font-bold mb-4">Methodology</h2>
+            <p>I utilized various tools and techniques, including:</p>
+            <ul>
+                <li>Python for data cleaning and analysis</li>
+                <li>Pandas for data manipulation</li>
+                <li>Matplotlib and Seaborn for visualizations</li>
+                <li>Statistical analysis for trend identification</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="text-2xl font-bold mb-4">Sample Python Code</h2>
+            <div class="code-block">
+def analyze_engagement(df):
+    # Group by category and calculate metrics
+    category_metrics = df.groupby('category').agg({
+        'likes': 'mean',
+        'shares': 'mean',
+        'comments': 'mean'
+    }).reset_index()
+    
+    # Calculate engagement score
+    category_metrics['engagement_score'] = (
+        category_metrics['likes'] * 1 +
+        category_metrics['shares'] * 2 +
+        category_metrics['comments'] * 3
+    )
+    
+    return category_metrics.sort_values(
+        'engagement_score',
+        ascending=False
+    )
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="text-2xl font-bold mb-4">Results and Impact</h2>
+            <p>Based on the analysis, we were able to:</p>
+            <ul>
+                <li>Increase engagement rates by 45%</li>
+                <li>Optimize content calendar based on data insights</li>
+                <li>Create comprehensive presentation for stakeholders</li>
+                <li>Save 10+ hours per week through automated reporting</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="text-2xl font-bold mb-4">Conclusion</h2>
+            <p>This case study showcases the power of data-driven decision making in social media strategy. By leveraging Python and advanced analytics, we transformed raw data into actionable insights that significantly improved content performance.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Khushi Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
